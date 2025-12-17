@@ -6,48 +6,35 @@ const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
     { name: 'Início', href: '#home' },
-    { name: 'O Escritório', href: '#about' },
-    { name: 'Áreas de Atuação', href: '#services' },
-    { name: 'Como Funciona', href: '#process' },
+    { name: 'Escritório', href: '#about' },
+    { name: 'Áreas', href: '#services' },
     { name: 'Contato', href: '#contact' },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-brand-900 shadow-lg py-1' : 'bg-transparent py-4'}`}>
-      <div className="container mx-auto px-6 flex justify-between items-center">
-        {/* Logo */}
-        <a href="#" className="flex items-center group">
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white shadow-xl py-2' : 'bg-transparent py-6'}`}>
+      <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
+        <a href="#home" className="flex items-center transition-transform hover:scale-105">
           <img 
             src="logo.png" 
             alt="Fabio Quadros Advocacia" 
-            className="h-20 md:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-            onError={(e) => {
-              e.currentTarget.style.display = 'none';
-              e.currentTarget.nextElementSibling?.classList.remove('hidden');
-            }}
+            className={`h-16 md:h-24 w-auto object-contain transition-all ${!scrolled ? 'brightness-0 invert' : ''}`}
           />
-          <div className="hidden flex-col ml-2">
-            <span className="text-white font-serif text-xl font-bold leading-none">FABIO QUADROS</span>
-            <span className="text-brand-gold text-xs tracking-[0.2em] uppercase">Advocacia</span>
-          </div>
         </a>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-10">
           {navLinks.map((link) => (
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider font-medium"
+              className={`text-[11px] uppercase tracking-[0.2em] font-bold transition-colors ${scrolled ? 'text-brand-navy hover:text-brand-gold' : 'text-white/80 hover:text-white'}`}
             >
               {link.name}
             </a>
@@ -56,44 +43,47 @@ const Navbar: React.FC = () => {
             href="https://wa.me/5591984608612" 
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-brand-gold text-brand-900 px-6 py-2 hover:bg-brand-goldLight transition-all duration-300 uppercase text-xs tracking-widest font-bold rounded-sm shadow-lg"
+            className={`px-8 py-3 text-[10px] uppercase tracking-[0.25em] font-bold transition-all border ${scrolled ? 'bg-brand-navy text-white border-brand-navy hover:bg-brand-gold hover:border-brand-gold' : 'text-white border-white/30 hover:bg-white hover:text-brand-navy'}`}
           >
             Consulta Online
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
         <button 
-          className="md:hidden text-white focus:outline-none p-2"
+          className={`lg:hidden p-2 ${scrolled ? 'text-brand-navy' : 'text-white'}`}
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={32} /> : <Menu size={32} />}
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
-      {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-brand-900 border-t border-gray-800 shadow-xl py-6 flex flex-col items-center gap-6">
+      {/* Mobile Menu */}
+      <div className={`lg:hidden fixed inset-0 bg-brand-navy z-[60] transition-transform duration-500 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="flex justify-between items-center p-8">
+          <img src="logo.png" alt="Logo" className="h-16 brightness-0 invert" />
+          <button onClick={() => setIsOpen(false)} className="text-white">
+            <X size={40} />
+          </button>
+        </div>
+        <div className="flex flex-col items-center justify-center h-3/4 gap-10">
           {navLinks.map((link) => (
             <a 
               key={link.name} 
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="text-gray-200 hover:text-brand-gold text-xl font-medium"
+              className="text-white text-3xl font-serif tracking-widest hover:text-brand-gold transition-colors"
             >
               {link.name}
             </a>
           ))}
-           <a 
+          <a 
             href="https://wa.me/5591984608612"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-brand-gold text-brand-900 px-10 py-4 font-bold uppercase tracking-wider rounded-sm shadow-xl"
+            className="mt-6 bg-brand-gold text-brand-navy px-12 py-5 text-xs font-bold uppercase tracking-[0.3em]"
           >
-            Fale no WhatsApp
+            Falar com Advogado
           </a>
         </div>
-      )}
+      </div>
     </nav>
   );
 };

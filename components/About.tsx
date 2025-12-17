@@ -2,46 +2,46 @@ import React from 'react';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
+    <section id="about" className="py-32 bg-brand-cream">
+      <div className="container mx-auto px-6 md:px-12">
+        <div className="flex flex-col lg:flex-row gap-24 items-center">
           
-          <div className="w-full lg:w-1/2 relative">
-             <div className="relative z-10">
-                <img 
-                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1632" 
-                  alt="Escritório de Advocacia" 
-                  className="rounded shadow-2xl w-full object-cover h-[500px]"
-                />
-             </div>
-             {/* Decorative element */}
-             <div className="absolute -bottom-6 -right-6 w-full h-full border-2 border-brand-gold z-0 hidden md:block"></div>
+          <div className="w-full lg:w-1/2">
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1632" 
+                alt="Dr. Fabio Quadros" 
+                className="w-full h-[600px] object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000"
+              />
+              <div className="absolute -bottom-10 -right-10 bg-brand-navy p-10 hidden xl:block shadow-2xl">
+                <p className="text-brand-gold font-serif text-5xl font-bold italic mb-2">Soluções</p>
+                <p className="text-white/60 text-[10px] uppercase tracking-[0.3em] font-bold">Consensuais e Ágeis</p>
+              </div>
+            </div>
           </div>
 
           <div className="w-full lg:w-1/2">
-            <span className="text-brand-gold font-bold uppercase tracking-widest text-sm mb-2 block">Quem Somos</span>
-            <h2 className="text-4xl font-serif text-brand-900 font-bold mb-6">Fabio Quadros Advocacia</h2>
-            <p className="text-gray-600 leading-relaxed mb-6 text-lg">
-              Fundado com o propósito de oferecer uma advocacia moderna e eficiente, o escritório <strong>Fabio Quadros Advocacia</strong> se destaca pela especialização em Direito de Família, com foco exclusivo em soluções consensuais.
-            </p>
-            <p className="text-gray-600 leading-relaxed mb-8 text-lg">
-              Entendemos que o divórcio é um momento delicado. Por isso, nossa missão é simplificar a burocracia jurídica, oferecendo um caminho mais rápido e menos oneroso para que você possa virar a página e iniciar um novo ciclo de vida com tranquilidade.
-            </p>
+            <span className="text-brand-gold font-bold uppercase tracking-[0.4em] text-[10px] mb-6 block">O Escritório</span>
+            <h2 className="text-5xl md:text-6xl font-serif text-brand-navy font-bold mb-10 leading-tight">Expertise e Compromisso Ético</h2>
+            <div className="space-y-6 text-brand-navy/80 text-lg leading-relaxed font-light">
+              <p>
+                O escritório <strong>Fabio Quadros Advocacia</strong> nasceu da necessidade de humanizar o atendimento jurídico em momentos de transição familiar. Acreditamos que o divórcio não deve ser sinônimo de conflito, mas de uma nova etapa resolvida com dignidade.
+              </p>
+              <p>
+                Com foco estratégico em Direito de Família e Sucessões, oferecemos soluções que priorizam o acordo e a rapidez, utilizando a tecnologia para que você tenha o melhor atendimento jurídico sem precisar sair de casa.
+              </p>
+            </div>
             
-            <div className="grid grid-cols-2 gap-8 mb-8">
-              <div>
-                <h4 className="text-3xl font-serif text-brand-gold font-bold mb-1">500+</h4>
-                <p className="text-gray-500 text-sm uppercase tracking-wide">Casos Resolvidos</p>
+            <div className="mt-14 flex flex-col sm:flex-row gap-12">
+              <div className="border-l-2 border-brand-gold pl-8">
+                <h4 className="text-brand-navy font-bold text-[11px] uppercase tracking-[0.3em] mb-3">Missão</h4>
+                <p className="text-brand-navy/60 text-sm italic font-serif">Resolver conflitos com técnica, ética e humanidade.</p>
               </div>
-              <div>
-                <h4 className="text-3xl font-serif text-brand-gold font-bold mb-1">100%</h4>
-                <p className="text-gray-500 text-sm uppercase tracking-wide">Foco em Consenso</p>
+              <div className="border-l-2 border-brand-gold pl-8">
+                <h4 className="text-brand-navy font-bold text-[11px] uppercase tracking-[0.3em] mb-3">Visão</h4>
+                <p className="text-brand-navy/60 text-sm italic font-serif">Ser referência em advocacia digital e resolutiva.</p>
               </div>
             </div>
-
-            <a href="#contact" className="text-brand-900 font-bold border-b-2 border-brand-gold pb-1 hover:text-brand-gold transition-colors inline-block">
-              Conheça nossa equipe
-            </a>
           </div>
 
         </div>
